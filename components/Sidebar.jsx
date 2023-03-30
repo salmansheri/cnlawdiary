@@ -28,14 +28,28 @@ const Sidebar = () => {
             <Link href="/mycases">
             <div className={ isMyCases ? Active : NonActive}>My Cases</div>
             </Link>
+            <Link></Link>
+            <Link></Link>
+            <Link></Link>
+            <Link></Link>
+            <Link></Link>
+            <Link></Link>
+            <Link></Link>
               
             <div className={isMyCalender ? Active : NonActive}>My Calender</div>
             <div className={isMyCourts ? Active : NonActive}>My courts</div>
             <div className={isHearing ? Active : NonActive}>Hearing</div>
             <div className={isUndatedCases ? Active : NonActive}>Undated Cases</div>
             <div className={isDecidedCases ? Active : NonActive}>Decided Cases</div>
+            <Link>
             <div className={isMyProfile ? Active:  NonActive}>My Profile</div>
+              
+            </Link>
+         
+            <Link>
+
             <div className={NonActive}>E-Courts Website</div>
+            </Link>
             <div className={NonActive}>Logout</div>
 
         </div>
