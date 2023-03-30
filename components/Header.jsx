@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return(
-        <div className="bg-white h-[70px] sticky top-0 flex items-center justify-between px-[100px]">
+        <div className="bg-white h-[70px] sticky top-0 flex items-center justify-between px-[100px]  shadow-md">
             <div>
                 <h1 className="font-bold text-4xl">C N Law Diary</h1>
             </div>

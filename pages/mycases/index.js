@@ -22,6 +22,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import Layout from '@/components/Layout';
+import AddCases from '@/components/AddCases';
+
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -238,6 +240,7 @@ export default function EnhancedTable() {
   const [visibleRows, setVisibleRows] = React.useState(null);
   const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
   const [paddingHeight, setPaddingHeight] = React.useState(0);
+  const [isClick, setIsClick] = React.useState(false)
 
   React.useEffect(() => {
     let rowsOnMount = stableSort(
@@ -351,6 +354,8 @@ export default function EnhancedTable() {
 
   return (
     <Layout>
+    <div className="relative">
+
 
     <Box sx={{ width: '90%', display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: "center", height: 'auto', margin: "100px" }}>
       <Paper sx={{ width: '90%', mb: 2 }}>
@@ -437,7 +442,17 @@ export default function EnhancedTable() {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
+
+      <div>
+        <button className="bg-blue-500 px-3 py-2 rounded-md shadow-md text-white hover:bg-blue-700 active:bg-black" onClick={() => setIsClick(true)}>Add Cases</button>
+      </div>
     </Box>
+    {isClick && (
+      <AddCases setIsClicked={setIsClick} />
+
+    )}
+   
+    </div>
     </Layout>
   );
 }

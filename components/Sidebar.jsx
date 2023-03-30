@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'; 
+import Link  from 'next/link';
 import { useRouter } from 'next/router'; 
 
 
@@ -26,27 +26,40 @@ const Sidebar = () => {
         <div>
             <h1 className="font-bold mt-5 text-3xl text-gray-500 mb-10">Dashboard</h1>
             <Link href="/mycases">
+           
             <div className={ isMyCases ? Active : NonActive}>My Cases</div>
+            
             </Link>
-            <Link></Link>
-            <Link></Link>
-            <Link></Link>
-            <Link></Link>
-            <Link></Link>
-            <Link></Link>
-            <Link></Link>
+
+           
+      
               
+            <Link href="/mycalender">
+
             <div className={isMyCalender ? Active : NonActive}>My Calender</div>
+            </Link>
+            <Link href="/mycourts">
+
             <div className={isMyCourts ? Active : NonActive}>My courts</div>
+            </Link>
+            <Link href="/hearing">
+
             <div className={isHearing ? Active : NonActive}>Hearing</div>
+            </Link>
+            <Link href="/undatedcases">
+
             <div className={isUndatedCases ? Active : NonActive}>Undated Cases</div>
+            </Link>
+            <Link href="/decidedcases">
+
             <div className={isDecidedCases ? Active : NonActive}>Decided Cases</div>
-            <Link>
+            </Link>
+            <Link href="/myprofile/123">
             <div className={isMyProfile ? Active:  NonActive}>My Profile</div>
               
             </Link>
          
-            <Link>
+            <Link href="/ecourtswebsite">
 
             <div className={NonActive}>E-Courts Website</div>
             </Link>

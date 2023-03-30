@@ -1,11 +1,16 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import styles from '@/styles/Home.module.css'; 
+
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
 import Notification from '@/components/Notification'; 
-import Graph from '@/components/Graph'
+import dynamic from 'next/dynamic';
+const Graph = dynamic(
+  () => import('../components/Graph'),
+  { ssr: false }
+)
+
 
 
 

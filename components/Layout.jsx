@@ -9,7 +9,7 @@ const Layout = ({children}) => {
 
 {/* Side bar  */}
 <main className="flex">
-<div className="w-[300px] h-[calc(100vh-80px)] sticky top-[70px] bg-white">
+<div className="w-[300px] h-[calc(100vh-80px)] sticky top-[70px] bg-white z-[999]">
 <Sidebar />
 
 </div>
