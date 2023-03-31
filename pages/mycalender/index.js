@@ -3,7 +3,13 @@ import React from 'react'
 
 const index = () => {
   return (
-    <Layout>index</Layout>
+    <Layout>
+    <div className="flex items-center justify-center h-full bg-blue-500">
+    calender
+
+    </div>
+        
+    </Layout>
   )
 }
 

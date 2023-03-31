@@ -15,6 +15,9 @@ const Sidebar = () => {
     const isUndatedCases = pathname.includes("undatedcases")
     const isDecidedCases = pathname.includes("decidedcases")
     const isMyProfile = pathname.includes("myprofile")
+    const isMyClients = pathname.includes("myclients"); 
+    const isHome = pathname === "/"; 
+  
 
 
 
@@ -22,12 +25,22 @@ const Sidebar = () => {
 
     const NonActive = "font-semibold  text-xl hover:bg-blue-300 p-2 rounded-md rounded-md  cursor-pointer"
   return (
-    <div className="px-5 bg-white shadow-lg h-full sticky top-0">
+    <div className="px-5  shadow-lg h-full">
         <div>
             <h1 className="font-bold mt-5 text-3xl text-gray-500 mb-10">Dashboard</h1>
+            <Link href="/">
+           
+            <div className={ isHome ? Active : NonActive}>Home</div>
+            
+            </Link>
             <Link href="/mycases">
            
             <div className={ isMyCases ? Active : NonActive}>My Cases</div>
+            
+            </Link>
+            <Link href="/myclients">
+           
+            <div className={ isMyClients ? Active : NonActive}>My Clients</div>
             
             </Link>
 
@@ -54,7 +67,7 @@ const Sidebar = () => {
 
             <div className={isDecidedCases ? Active : NonActive}>Decided Cases</div>
             </Link>
-            <Link href="/myprofile/123">
+            <Link href="/myprofile">
             <div className={isMyProfile ? Active:  NonActive}>My Profile</div>
               
             </Link>
