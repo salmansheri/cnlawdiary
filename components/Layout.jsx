@@ -1,20 +1,25 @@
-import React from 'react'; 
+import React, { useState } from 'react'; 
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 
 const Layout = ({children}) => {
+  const [isClicked, setIsClicked] = useState(false)
   return (
     <>
-     <Header />
+     <Header setIsClicked={setIsClicked} isClicked={isClicked} />
 
 {/* Side bar  */}
 <main className="flex">
-<div className="w-[300px] h-[calc(100vh-80px)] sticky top-[70px] bg-white">
+{isClicked && (
+  <div className="min-w-[300px] h-screen fixed top-[70px] bg-white">
 <Sidebar />
 
 </div>
 
-<div className="grow h-[calc(100vh-70px)]">
+)}
+
+
+<div className="flex items-center h-screen justify-center w-full">
     {children}
 </div>
 

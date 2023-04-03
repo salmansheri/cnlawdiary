@@ -32,10 +32,22 @@ export default function Home() {
      {/* Header  */}
 
      <Layout>
-     
+     <div>
+     <div>
      <Notification />
-
+      
+     </div>
+     <div>
      <Graph />
+
+     </div>
+
+     </div>
+    
+     
+ 
+
+   
     
     
 

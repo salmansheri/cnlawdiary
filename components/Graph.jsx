@@ -33,8 +33,7 @@ const Graph = () => {
     <div className="h-[500px] flex items-center justify-center">
     <div className="bg-white w-[80%] flex items-center justify-center h-[80%] rounded-lg shadow-md">
     <LineChart
-        width={1000}
-        height={300}
+       
         data={data}
         margin={{top:5, right: 20, bottom: 5, left: 0}}
     >

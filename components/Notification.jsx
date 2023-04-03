@@ -5,9 +5,9 @@ const Notification = () => {
  
   return (
     <>
-      <div className="flex items-center justify-around space-x-10 h-[400px]">
+      <div className="lg:flex flex-wrap gap-10 mt-[200px]">
         
-          <div className="bg-white px-7 py-5 rounded-lg shadow-lg ">
+          <div className="bg-white px-7 py-5 rounded-lg shadow-lg my-10">
             <h1 className="font-bold text-3xl">Undated Cases</h1>
             <div className="flex gap-1">
               <p className="font-semibold text-2xl">Pending: </p>
@@ -16,7 +16,7 @@ const Notification = () => {
           </div>
        
     
-          <div className="bg-white py-5 px-8 rounded-lg shadow-lg">
+          <div className="bg-white py-5 px-8 rounded-lg shadow-lg my-10">
             <h1 className="font-bold text-2xl">Today Hearing</h1>
             <p className="text-center font-semibold text-2xl">10</p>
           </div>
