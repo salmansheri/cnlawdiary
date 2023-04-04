@@ -2,8 +2,10 @@ import Layout from '@/components/Layout'
 import React, { useState } from 'react'; 
 import Table from '@/components/Table';
 import AddCases from '@/components/AddCases';
+import UndatedTable from '@/components/tables/UndatedTable';
 
-const index = () => {
+const index = ({courtCases}) => {
+  console.log(courtCases)
   const [isClicked, setIsClicked] = useState(false)
   return (
     <Layout>
@@ -17,7 +19,7 @@ const index = () => {
 
         </button>
       </div>
-        <Table />
+        <UndatedTable courtCases={courtCases} />
       </div>
       {isClicked && (
         <div>
@@ -28,6 +30,26 @@ const index = () => {
    
     </Layout>
   )
+}
+
+
+export const getServerSideProps = async () => {
+  const response = await fetch("http://localhost:3000/api/cases", {
+    method: "GET", 
+    headers: {
+      'Content-Type': 'application/json', 
+    }
+
+  })
+
+  const data = await response.json(); 
+
+  return {
+    props: {
+      courtCases: data, 
+
+    }
+  }
 }
 
 export default index

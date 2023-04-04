@@ -30,8 +30,8 @@ const Graph = () => {
         }, 
     ];
   return (
-    <div className="h-[500px] flex items-center justify-center">
-    <div className="bg-white w-[80%] flex items-center justify-center h-[80%] rounded-lg shadow-md">
+    <div className="h-[500px] w-full hidden">
+    <div className="bg-white flex items-center justify-center h-[80%] rounded-lg shadow-md">
     <LineChart
        
         data={data}

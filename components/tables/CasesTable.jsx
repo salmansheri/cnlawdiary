@@ -66,8 +66,8 @@ const CasesTable = ({cases}) => {
   
 
 
-        <div className="bg-white w-full rounded-lg overflow-hidden shadow-md">
-         <table className="border  w-full text-md text-center">
+        <div className="bg-white w-full rounded-lg shadow-md overflow-auto">
+         <table className="border  w-full text-md text-center rounded-lg">
             <thead className="h-10 bg-black text-white">
                 <tr>
                     <th>S.no</th>
@@ -89,10 +89,12 @@ const CasesTable = ({cases}) => {
                     
                 </tr>
             </thead>
-            <tbody>
+            
            {courtCases.map((courtCase, index) => (
+            <tbody key={courtCase._id} index={index}>
           
             <tr className="h-10">
+                
                     <td>{index + 1}</td>
                     <td>{courtCase._id}</td>
                     <td>{courtCase.regno}</td>
@@ -118,13 +120,14 @@ const CasesTable = ({cases}) => {
                  
                    
                 </tr>
+            </tbody>
 
             
            ))}
                
                
               
-            </tbody>
+            
          </table>
     
         </div>

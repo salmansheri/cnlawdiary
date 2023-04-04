@@ -11,7 +11,7 @@ const Layout = ({children}) => {
 {/* Side bar  */}
 <main className="flex">
 {isClicked && (
-  <div className="min-w-[300px] h-screen fixed top-[70px] bg-white">
+  <div className="min-w-[300px] h-screen fixed top-[70px] bg-white z-40">
 <Sidebar />
 
 </div>
@@ -19,7 +19,7 @@ const Layout = ({children}) => {
 )}
 
 
-<div className="flex items-center h-screen justify-center w-full">
+<div className="w-full px-5 md:mx-auto lg:mx-auto mt-[100px]">
     {children}
 </div>
 

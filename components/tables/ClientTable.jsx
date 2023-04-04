@@ -3,7 +3,7 @@ import ReactWhatsapp from 'react-whatsapp';
 
 const ClientTable = ({handleDelete, setIsClicked, myClients}) => {
   return (
-    <div className="bg-white w-full rounded-lg overflow-hidden shadow-md">
+    <div className="bg-white w-full rounded-lg overflow-auto shadow-md">
           <table className="border  w-full text-md text-center">
             <thead className="h-10 bg-black text-white">
               <tr>
@@ -17,8 +17,8 @@ const ClientTable = ({handleDelete, setIsClicked, myClients}) => {
                 <th>Click to chat</th>
               </tr>
             </thead>
-            <tbody>
               {myClients.map((client, index) => (
+            <tbody key={client._id} index={index}>
                 <tr className="h-10">
                   <td>{index + 1}</td>
                   <td>{client._id}</td>
@@ -56,8 +56,8 @@ const ClientTable = ({handleDelete, setIsClicked, myClients}) => {
                     </ReactWhatsapp>
                   </td>
                 </tr>
-              ))}
             </tbody>
+              ))}
           </table>
         </div>
 

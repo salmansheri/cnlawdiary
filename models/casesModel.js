@@ -46,6 +46,27 @@ const casesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  hearingdate: {
+    type: Date, 
+    
+  }, 
+  decideddate: {
+    type: Date, 
+
+  }, 
+  courtname: {
+    type: String
+  }, 
+  place: {
+    type: String, 
+
+  }, 
+  result: {
+    type: String
+
+  }
+
+
 });
 
 const casesModel = mongoose.models.case || mongoose.model("case", casesSchema);

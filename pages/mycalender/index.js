@@ -18,7 +18,7 @@ const shedule = ({ courtCases }) => {
 const index = () => {
   return (
     <Layout>
-      <div className="">
+      <div className="mt-[100px]">
         <FullCalendar
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"

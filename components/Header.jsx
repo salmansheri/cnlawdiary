@@ -4,7 +4,7 @@ import  {GiHamburgerMenu}  from 'react-icons/gi';
 const Header = ({setIsClicked, isClicked}) => {
    
     return(
-        <div className=" bg-white flex items-center h-[70px] justify-between p-10 md:px-10 lg:px-20 fixed top-0 w-full">
+        <div className=" bg-white flex items-center h-[70px] justify-between p-10 md:px-10 lg:px-20 fixed top-0 w-full z-999">
         <div>
         <GiHamburgerMenu className="cursor-pointer" onClick={() => setIsClicked(!isClicked)} />
 

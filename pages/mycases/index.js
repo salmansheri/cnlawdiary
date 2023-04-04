@@ -13,12 +13,14 @@ const index = ({ cases }) => {
     clientStatus: "",
     casename: "",
     date: "",
-    ias: [],
+    
     act: "",
     oppositionParty: "",
     oppositeAdvocate: "",
     casedesc: "", 
   });
+
+  const [iaList, setIaList] = useState([])
 
   const [ia, setIa] = useState("");
 
@@ -58,6 +60,9 @@ const index = ({ cases }) => {
           ia={ia}
           setIa={setIa}
           cases={cases}
+          setIaList={setIaList}
+          iaList={iaList}
+
         />
       )}
     </Layout>
