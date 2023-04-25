@@ -5,11 +5,30 @@ import Layout from "@/components/Layout";
 import Notification from "@/components/Notification";
 import dynamic from "next/dynamic";
 const Graph = dynamic(() => import("../components/Graph"), { ssr: false });
+import { useSelector } from 'react-redux'; 
+import { useRouter } from 'next/router'; 
+import Login from "./auth/login";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+
+
 
 export default function Home({ courtCases }) {
+  const user = useSelector(state => state.user); 
+  const router = useRouter();
+
+  const { data: session }  = useSession(); 
+  console.log(session)
+
+  const {email} = user; 
   const numberOfUndatedCases = courtCases.filter(
     (cases) => cases.casestatus === "undated"
   );
+
+    if(!session?.user?.email) {
+      return <Login />
+    }
+ 
 
   return (
     <>
@@ -21,29 +40,34 @@ export default function Home({ courtCases }) {
       </Head>
       {/* Header  */}
 
-      <Layout>
+      <Layout >
         <div>
           <div>
             <Notification numberOfUndatedCases={numberOfUndatedCases} />
           </div>
-          <div>
-            <Graph />
-          </div>
+        
         </div>
       </Layout>
     </>
   );
 }
 
-export const getServerSideProps = async () => {
-  const response = await fetch("http://localhost:3000/api/cases", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export const getServerSideProps = async (ctx) => {
+  const myCookie = ctx.req?.cookies; 
 
-  const data = await response.json();
+  if(!myCookie) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      }
+    }
+  }
+
+ 
+  const response = await axios.get("http://localhost:3000/api/cases");
+
+  const data =  response.data; 
 
   return {
     props: {

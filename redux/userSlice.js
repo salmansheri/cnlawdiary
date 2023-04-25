@@ -5,6 +5,8 @@ const userSlice = createSlice({
     initialState: {
         username: "", 
         email: "", 
+        id: "", 
+        photo: "", 
         
 
     },
@@ -12,11 +14,15 @@ const userSlice = createSlice({
         loggedUser: (state, action) => {
             state.username = action.payload.username; 
             state.email = action.payload.email; 
+            state.id = action.payload.id; 
+            state.photo = action.payload.photo
         }, 
 
         reset: (state) => {
             state.username = ""; 
             state.email = ""; 
+            state.id = ""; 
+            state.photo = "";  
 
         }
     }

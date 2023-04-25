@@ -1,8 +1,9 @@
 import dbConnect from "@/libs/dbConnect";
 
 import userModel from "@/models/userModel";
+import bcrypt from 'bcrypt'; 
 
-import CryptoJS from "crypto-js";
+
 
 
 const handler = async (req, res) => {
@@ -24,9 +25,12 @@ const handler = async (req, res) => {
 
     if(method==="POST") {
         try {
-            const {firstname, lastname, username, password, photo} = req.body
+            const {firstname, lastname, username, password, photo, email} = req.body; 
 
-            const hashedPassword = CryptoJS.AES.encrypt(password, process.env.SECRET_KEY).toString(); 
+            const salt = await bcrypt.genSalt(10); 
+            const hashedPassword = await bcrypt.hash(password, salt); 
+
+            
 
             const user = await userModel.create({
                 firstname: firstname, 
@@ -34,6 +38,7 @@ const handler = async (req, res) => {
                 username: username, 
                 password: hashedPassword, 
                 photo: photo, 
+                email: email
             }); 
             res.status(200).json(user); 
 

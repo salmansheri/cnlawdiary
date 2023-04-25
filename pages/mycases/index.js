@@ -4,6 +4,7 @@ import Table from "@/components/Table";
 import AddCases from "@/components/AddCases";
 import CasesTable from "@/components/tables/CasesTable";
 import CasesModal from "@/components/Modals/addModals/CasesModal";
+import Search from "@/components/Search";
 const index = ({ cases }) => {
   const [data, setData] = useState({
     regno: 0,
@@ -25,6 +26,10 @@ const index = ({ cases }) => {
   const [ia, setIa] = useState("");
 
   const [isClicked, setIsClicked] = useState(false);
+
+  const [searchItem, setSearchItem] = useState(""); 
+
+ 
 
   return (
     <Layout>
@@ -49,7 +54,8 @@ const index = ({ cases }) => {
           </svg>
           Add Cases
         </button>
-        <CasesTable cases={cases} />
+        <Search searchItem={searchItem} setSearchItem={setSearchItem} />
+        <CasesTable cases={cases} searchItem={searchItem} />
       </div>
 
       {isClicked && (

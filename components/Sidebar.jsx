@@ -1,12 +1,17 @@
 import React from 'react'
 import Link  from 'next/link';
 import { useRouter } from 'next/router'; 
-
+import { useDispatch, useSelector } from 'react-redux'; 
+import { reset } from '@/redux/userSlice';
+import { signOut } from 'next-auth/react';
 
 const Sidebar = () => {
     const router = useRouter();
    
-    const {pathname} = router; 
+    const {pathname} = router;
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user)  
+    const { id } = user; 
     console.log(pathname)
     const isMyCases = pathname.includes("mycases")
     const isMyCalender = pathname.includes("mycalender")
@@ -17,7 +22,12 @@ const Sidebar = () => {
     const isMyProfile = pathname.includes("myprofile")
     const isMyClients = pathname.includes("myclients"); 
     const isHome = pathname === "/"; 
-  
+
+    const handleLogout = () => {
+      signOut(); 
+    }
+   
+    
 
 
 
@@ -67,7 +77,7 @@ const Sidebar = () => {
 
             <div className={isDecidedCases ? Active : NonActive}>Decided Cases</div>
             </Link>
-            <Link href="/myprofile">
+            <Link href={`/myprofile/${id}`}>
             <div className={isMyProfile ? Active:  NonActive}>My Profile</div>
               
             </Link>
@@ -76,7 +86,7 @@ const Sidebar = () => {
 
             <div className={NonActive}>E-Courts Website</div>
             </Link>
-            <div className={NonActive}>Logout</div>
+            <div className={NonActive} onClick={handleLogout}>Logout</div>
 
         </div>
     </div>

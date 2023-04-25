@@ -3,6 +3,8 @@ import Layout from "@/components/Layout";
 
 import ClientTable from "@/components/tables/ClientTable";
 import ClientModals from "@/components/Modals/addModals/ClientModals";
+import { useRouter } from "next/navigation";
+import Search from "@/components/Search";
 
 const MyClients = ({ clients }) => {
   const [isClicked, setIsClicked] = useState(false);
@@ -12,6 +14,8 @@ const MyClients = ({ clients }) => {
   const [address, setAddress] = useState("");
   const [mobileno, setMobileNo] = useState(0);
   const [email, setEmail] = useState("");
+  const router = useRouter();
+  const [searchItem, setSearchItem] = useState("");  
 
   const handleClick = async () => {
     try {
@@ -28,7 +32,9 @@ const MyClients = ({ clients }) => {
         }),
       });
 
-      alert("client Created successfully");
+     
+      router.refresh(); 
+      
     } catch (err) {
       alert(err.message);
       console.log(err);
@@ -74,7 +80,9 @@ const MyClients = ({ clients }) => {
           </svg>
           Add Clients
         </button>
+        <Search searchItem={searchItem} setSearchItem={setSearchItem} />
         <ClientTable
+          searchItem={searchItem}
           handleDelete={handleDelete}
           setIsClicked={setIsClicked}
           myClients={myClients}

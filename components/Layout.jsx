@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 
-const Layout = ({children}) => {
+const Layout = ({children, user}) => {
   const [isClicked, setIsClicked] = useState(false)
   return (
     <>
-     <Header setIsClicked={setIsClicked} isClicked={isClicked} />
+     <Header user={user} setIsClicked={setIsClicked} isClicked={isClicked} />
 
 {/* Side bar  */}
 <main className="flex">

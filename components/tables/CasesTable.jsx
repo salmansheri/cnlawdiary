@@ -1,11 +1,14 @@
 import React, {useState} from 'react'; 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { serialize } from 'cookie';
 
-const CasesTable = ({cases}) => {
+const CasesTable = ({cases, searchItem}) => {
     const router = useRouter(); 
 
     const [courtCases, setCourtCases] = useState(cases)
+
+    
 
    
 
@@ -89,9 +92,18 @@ const CasesTable = ({cases}) => {
                     
                 </tr>
             </thead>
-            
-           {courtCases.map((courtCase, index) => (
-            <tbody key={courtCase._id} index={index}>
+
+         {courtCases.filter((cases) => cases.regno === searchItem ||
+                                        cases.CNRno=== searchItem ||
+                                        cases.clientname.toLowerCase().includes(searchItem.toLowerCase()) ||
+                                        cases.clientstatus.toLowerCase().includes(searchItem.toLowerCase()) || 
+                                        cases.casename.toLowerCase().includes(searchItem.toLowerCase()) || 
+                                        cases.casestatus.toLowerCase().includes(searchItem.toLowerCase()) || 
+                                        cases.act.toLowerCase().includes(searchItem.toLowerCase()) || 
+                                        cases.oppositionparty.toLowerCase().includes(searchItem.toLowerCase()) || 
+                                        cases.oppositionadvocate.toLowerCase().includes(searchItem.toLowerCase())
+            ).map((courtCase, index) => (
+                 <tbody key={courtCase._id} index={index}>
           
             <tr className="h-10">
                 
@@ -122,8 +134,43 @@ const CasesTable = ({cases}) => {
                 </tr>
             </tbody>
 
+
+            ))}
             
-           ))}
+           {/* {courtCases.map((courtCase, index) => (
+            // <tbody key={courtCase._id} index={index}>
+          
+            // <tr className="h-10">
+                
+            //         <td>{index + 1}</td>
+            //         <td>{courtCase._id}</td>
+            //         <td>{courtCase.regno}</td>
+            //         <td>{courtCase.clientname}</td>
+            //         <td>{courtCase.date}</td>
+            //         <td>{courtCase.clientstatus}</td>
+            //         <td>{courtCase.casename}</td>
+               
+                  
+                   
+            //         <td>{courtCase.act}</td>
+            //         <td>{courtCase.oppositionparty}</td>
+            //         <td>{courtCase.oppositionadvocate}</td>
+            //         <td>
+            //            akfljasdkfjdsklfjsdkl
+            //         </td>
+            //         <td className="flex gap-2 ml-10">
+            //             <button className="bg-red-500 px-2 py-1 rounded-md text-white shadow-sm" onClick={() => handleUndated(courtCase._id)}>Undated</button>
+            //             <button className="bg-blue-500 px-2 py-1 rounded-md text-white shadow-sm" onClick={() => handleDecided(courtCase._id)}>Decided</button>
+            //         </td>
+            //         <td><Link className="text-blue-500 hover:underline" href={`/mycases/details/${courtCase._id}`}>Details</Link></td>
+                    
+                 
+                   
+            //     </tr>
+            // </tbody>
+
+            
+           ))} */}
                
                
               
